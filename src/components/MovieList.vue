@@ -1,13 +1,19 @@
 <template>
-  <div>
-    <h1>Lista de peliculas</h1>
-    <ul>
-      <li v-for="movie in movies" :key="movie">{{ movie.title }}</li>
-    </ul>
-    <span class="anterior" @click="pagAnterior()">Anterior</span>
-    Pagina {{ currentPage }}
-    <span class="siguiente" @click="pagSiguiente()">Siguiente</span>
-  </div>
+  <v-container>
+    <v-row>
+      <v-col cols="12" class="text-center"> <h1>Lista de Películas</h1> </v-col>
+      <v-col cols="12" sm="6" lg="3" v-for="movie in movies" :key="movie">
+        {{ movie.title }}
+      </v-col>
+    </v-row>
+    <v-pagination
+      class="mt-10"
+      v-model="currentPage"
+      :length="500"
+      total-visible="6"
+      circle
+    ></v-pagination>
+  </v-container>
 </template>
 
 <script>
@@ -19,6 +25,11 @@ export default {
       currentPage: 1,
     };
   },
+  watch: {
+    currentPage() {
+      this.fetchData();
+    },
+  },
   created() {
     this.fetchData();
   },
@@ -29,16 +40,6 @@ export default {
           this.currentPage
       );
       this.movies = (await response.json()).results;
-    },
-    pagAnterior() {
-      if (this.currentPage > 1) {
-        this.currentPage--;
-        this.fetchData();
-      }
-    },
-    pagSiguiente() {
-      this.currentPage++;
-      this.fetchData();
     },
   },
 };
