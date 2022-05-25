@@ -1,9 +1,9 @@
 <template>
   <v-container>
     <v-row>
-      <v-col cols="12" class="text-center"> <h1>Lista de Películas</h1> </v-col>
+      <v-col cols="12" class="text-center"> <h1>Popular Movies</h1> </v-col>
       <v-col cols="12" sm="6" lg="3" v-for="movie in movies" :key="movie">
-        {{ movie.title }}
+        <movie-card :movie="movie"></movie-card>
       </v-col>
     </v-row>
     <v-pagination
@@ -17,8 +17,11 @@
 </template>
 
 <script>
+import MovieCard from "./MovieCard.vue";
+
 export default {
   name: "MovieList",
+  components: { MovieCard },
   data() {
     return {
       movies: [],
