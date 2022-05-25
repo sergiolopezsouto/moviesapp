@@ -41,6 +41,7 @@ export default {
       return dateAsString.subtr(0, 4);
     }, */
     getImageSrc(movie) {
+      if (!movie.poster_path) return "/placeholder_large.png";
       return `https://image.tmdb.org/t/p/w500/${movie.poster_path}`; //para incluir texto interpolando elementos de js
     },
   },

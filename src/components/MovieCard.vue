@@ -17,6 +17,7 @@ export default {
   },
   methods: {
     getImageSrc(movie) {
+      if (!movie.backdrop_path) return "/placeholder_small.png";
       return `https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`; //para incluir texto interpolando elementos de js
     },
   },
