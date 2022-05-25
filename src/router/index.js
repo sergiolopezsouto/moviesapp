@@ -4,12 +4,14 @@ import HomeView from "../views/HomeView.vue";
 import AboutView from "../views/AboutView.vue";
 import MovieList from "../components/MovieList.vue";
 import MovieInfo from "../components/MovieInfo.vue";
+import NotFound from "../views/NotFound.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
+    redirect: "/movies",
     name: "Home",
     component: HomeView,
   },
@@ -27,6 +29,11 @@ const routes = [
     path: "/movies/:movieId",
     name: "MovieInfo",
     component: MovieInfo,
+  },
+  {
+    path: "*",
+    name: "NotFound",
+    component: NotFound,
   },
 ];
 
