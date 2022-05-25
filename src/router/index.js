@@ -3,24 +3,30 @@ import VueRouter from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import AboutView from "../views/AboutView.vue";
 import MovieList from "../components/MovieList.vue";
+import MovieInfo from "../components/MovieInfo.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
-    name: "home",
+    name: "Home",
     component: HomeView,
   },
   {
     path: "/about",
-    name: "about",
+    name: "About",
     component: AboutView,
   },
   {
     path: "/movies",
-    name: "movies",
+    name: "Movies",
     component: MovieList,
+  },
+  {
+    path: "/movies/:movieId",
+    name: "MovieInfo",
+    component: MovieInfo,
   },
 ];
 

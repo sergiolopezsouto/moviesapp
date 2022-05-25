@@ -2,7 +2,7 @@
   <v-app>
     <v-app-bar app color="primary" dark>
       <v-toolbar-title class="title">
-        <router-link to="/" tag="span"> MOVIES APP</router-link>
+        <router-link to="/" tag="span"> MOVIES APP </router-link>
       </v-toolbar-title>
 
       <v-spacer></v-spacer>

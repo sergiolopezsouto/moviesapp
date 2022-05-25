@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card :to="{ name: 'MovieInfo', params: { movieId: movie.id } }">
     <v-img class="white--text align-end" :src="getImageSrc(movie)">
       <v-card-title> {{ movie.title }} </v-card-title>
     </v-img>
