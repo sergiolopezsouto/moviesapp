@@ -14,6 +14,16 @@
           <v-col cols="8">
             {{ movie.genres.map((e) => e.name).join(", ") }}
           </v-col>
+          <!--           <v-col cols="4"><span class="label">Cast</span></v-col>
+          <v-col cols="8">
+            {{ credits }}
+          </v-col> -->
+          <v-col cols="4"><span class="label">Overview</span></v-col>
+          <v-col cols="8"> {{ movie.overview }} </v-col>
+          <v-col cols="4"><span class="label">Votes</span></v-col>
+          <v-col cols="8"> {{ movie.vote_count }} </v-col>
+          <v-col cols="4"><span class="label">Votes Average</span></v-col>
+          <v-col cols="8"> {{ movie.vote_average }} </v-col>
         </v-row>
       </v-col>
     </v-row>
@@ -26,15 +36,23 @@ export default {
   data() {
     return {
       movie: null,
+      credits: null,
     };
   },
   async created() {
-    const response = await fetch(
+    let response = await fetch(
       "https://api.themoviedb.org/3/movie/" +
         this.$route.params.movieId +
         "?api_key=a4af8c392d0da1e059b8a66e13fda4ac"
     );
     this.movie = await response.json();
+    response = await fetch(
+      "https://api.themoviedb.org/3/movie/" +
+        this.$route.params.movieId +
+        +"/credits" +
+        "?api_key=a4af8c392d0da1e059b8a66e13fda4ac"
+    );
+    this.credits = await response.json();
   },
   methods: {
     /*     getYear(dateAsString) {
