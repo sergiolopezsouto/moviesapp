@@ -5,13 +5,17 @@ import AboutView from "../views/AboutView.vue";
 import MovieList from "../components/MovieList.vue";
 import MovieInfo from "../components/MovieInfo.vue";
 import NotFound from "../views/NotFound.vue";
+import CreateMovie from "../components/CreateMovie.vue";
+import UserLogin from "../components/UserLogin.vue";
+import UserRegister from "../components/UserRegister.vue";
+import UserProfile from "../components/UserProfile.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
-    redirect: "/movies",
+    // redirect: "/movies",
     name: "Home",
     component: HomeView,
   },
@@ -29,6 +33,26 @@ const routes = [
     path: "/movies/:movieId",
     name: "MovieInfo",
     component: MovieInfo,
+  },
+  {
+    path: "/create",
+    name: "Create",
+    component: CreateMovie,
+  },
+  {
+    path: "/register",
+    name: "Register",
+    component: UserRegister,
+  },
+  {
+    path: "/login",
+    name: "Login",
+    component: UserLogin,
+  },
+  {
+    path: "/profile",
+    name: "Profile",
+    component: UserProfile,
   },
   {
     path: "*",
