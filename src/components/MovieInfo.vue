@@ -16,7 +16,7 @@
           </v-col>
           <!--           <v-col cols="4"><span class="label">Cast</span></v-col>
           <v-col cols="8">
-            {{ credits }}
+            {{ credits.cast.map((p) => p.name).join(", ") }}
           </v-col> -->
           <v-col cols="4"><span class="label">Overview</span></v-col>
           <v-col cols="8"> {{ movie.overview }} </v-col>
@@ -46,6 +46,11 @@ export default {
         "?api_key=a4af8c392d0da1e059b8a66e13fda4ac"
     );
     this.movie = await response.json();
+    if (response.status != 200) this.movie = null;
+    if (!this.movie) {
+      alert("Movie not found");
+      this.$router.go(-1);
+    }
     response = await fetch(
       "https://api.themoviedb.org/3/movie/" +
         this.$route.params.movieId +
